@@ -22,7 +22,9 @@ app.post('/registerserver', function (req, res) {
 
 app.get('/toggle', function (req, res){
     console.log(req.query);
-    var pin = pinsOut[parseInt(req.query.pin)];
+    var pinIndex = parseInt(req.query.pin)
+    console.log('index ', pinIndex)
+    var pin = pinsOut[pinIndex];
     duino.digitalWrite( pin, !duino.digitalRead( pin));
     console.log('PIN >>', index, ' | state: ', duino.digitalRead( pin) );
     res.send('toggle: ' + req.query.pin + " | state " + duino.digitalRead( pin));
