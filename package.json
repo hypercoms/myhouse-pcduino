@@ -1,0 +1,26 @@
+{
+  "name": "myhouse-pcduino",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "async-foreach": "^0.1.3",
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "request": "^2.69.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hypercoms/myhouse-pcduino.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hypercoms/myhouse-pcduino/issues"
+  },
+  "homepage": "https://github.com/hypercoms/myhouse-pcduino"
+}
