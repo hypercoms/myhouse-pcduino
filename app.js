@@ -33,11 +33,11 @@ app.get('/toggle', function (req, res){
 
 
 app.get('/toggleall', function (req, res){
-    forEach(pinsOut, function (pin){
+    forEach(pinsOut, function (pin, pinIndex){
         duino.digitalWrite( pin, !duino.digitalRead( pin));
         console.log('PIN >>', pinIndex, ' | state: ', duino.digitalRead( pin) );
     });
-    res.send('toggle: ' + pinIndex + " | state " + duino.digitalRead( pin));
+    res.send('toggle ALL');
 });
 
 
