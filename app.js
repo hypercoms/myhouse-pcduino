@@ -25,7 +25,7 @@ app.get('/toggle', function (req, res){
     var pinIndex = parseInt(req.query.pin);
     console.log(pinIndex, pinsOut);
     console.log(pinsOut[pinIndex]);
-    var pin = pinsOut[0];
+    var pin = pinsOut[pinIndex];
     duino.digitalWrite( pin, !duino.digitalRead( pin));
     console.log('PIN >>', pinIndex, ' | state: ', duino.digitalRead( pin) );
     res.send('toggle: ' + pinIndex + " | state " + duino.digitalRead( pin));
