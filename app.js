@@ -6,9 +6,9 @@ var bodyParser = require('body-parser');
 var duino = require( 'iotduino'),
     pinMode = duino.PinMode, pinState = duino.PinState,
     pins = duino.Pins, ledPin = pins.GPIO13;
-var led2 = pins.GPIO2;
-var led3 = pins.GPIO3;
-var led4 = pins.GPIO4;
+var pinsOut = [pins.GPIO0, pins.GPIO1, pins.GPIO2, pins.GPIO3, pins.GPIO4,
+               pins.GPIO5, pins.GPIO6, pins.GPIO7, pins.GPIO8, pins.GPIO9,
+               pins.GPIO10, pins.GPIO11, pins.GPIO12, pins.GPIO13];
 
 app.use( bodyParser.json() );
 
@@ -21,8 +21,11 @@ app.post('/registerserver', function (req, res) {
 });
 
 app.get('/toggle', function (req, res){
-    duino.digitalWrite( ledPin, !duino.digitalRead( ledPin));
-    res.send('Actual value for pin 13: ' + duino.digitalRead( ledPin));
+    forEach(pinsOut, function (pin, index, arr){
+        duino.digitalWrite( pin, !duino.digitalRead( pin));
+        console.log('PIN >>', index, ' | state: ', duino.digitalRead( pin) )
+    });
+    res.send('toggle all ok');
 });
 
 app.get('/toggle2', function (req, res){
@@ -42,11 +45,9 @@ app.get('/toggle4', function (req, res){
 
 app.listen(3000, function () {
     console.log('Example app listening on port 3000!');
-    duino.pinMode( ledPin, pinMode.OUTPUT);
-    duino.pinMode( led2, pinMode.OUTPUT);
-    duino.pinMode( led3, pinMode.OUTPUT);
-    duino.pinMode( led4, pinMode.OUTPUT);
-    setInterval(sendToServers, 1000);
+    forEach(pinsOut, function (pin){
+        duino.pinMode( pin, pinMode.OUTPUT);
+    });
 });
 
 function sendToServers(){
