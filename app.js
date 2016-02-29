@@ -32,6 +32,15 @@ app.get('/toggle', function (req, res){
 });
 
 
+app.get('/toggleall', function (req, res){
+    forEach(pinsOut, function (pin){
+        duino.digitalWrite( pin, !duino.digitalRead( pin));
+        console.log('PIN >>', pinIndex, ' | state: ', duino.digitalRead( pin) );
+    });
+    res.send('toggle: ' + pinIndex + " | state " + duino.digitalRead( pin));
+});
+
+
 app.listen(3000, function () {
     console.log('Example app listening on port 3000!');
     forEach(pinsOut, function (pin){
