@@ -43,6 +43,9 @@ app.get('/toggle4', function (req, res){
 app.listen(3000, function () {
     console.log('Example app listening on port 3000!');
     duino.pinMode( ledPin, pinMode.OUTPUT);
+    duino.pinMode( led2, pinMode.OUTPUT);
+    duino.pinMode( led3, pinMode.OUTPUT);
+    duino.pinMode( led4, pinMode.OUTPUT);
     setInterval(sendToServers, 1000);
 });
 
