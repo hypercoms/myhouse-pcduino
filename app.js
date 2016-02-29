@@ -43,7 +43,7 @@ app.get('/toggleall', function (req, res){
 });
 
 app.get('/a0', function (req, res) {
-    res.send('A0: ', duino.analogRead(sensorA0));
+    res.send('A0: ' + duino.analogRead(sensorA0));
 });
 
 app.listen(3000, function () {
