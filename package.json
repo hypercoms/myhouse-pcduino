@@ -7,7 +7,8 @@
     "async-foreach": "^0.1.3",
     "body-parser": "^1.15.0",
     "express": "^4.13.4",
-    "request": "^2.69.0"
+    "request": "^2.69.0",
+    "iotduino": "^0.1.8"
   },
   "devDependencies": {},
   "scripts": {
