@@ -21,27 +21,12 @@ app.post('/registerserver', function (req, res) {
 });
 
 app.get('/toggle', function (req, res){
-    forEach(pinsOut, function (pin, index, arr){
-        duino.digitalWrite( pin, !duino.digitalRead( pin));
-        console.log('PIN >>', index, ' | state: ', duino.digitalRead( pin) )
-    });
-    res.send('toggle all ok');
+    var pin = pinsOut[req.query.pin];
+    duino.digitalWrite( pin, !duino.digitalRead( pin));
+    console.log('PIN >>', index, ' | state: ', duino.digitalRead( pin) );
+    res.send('toggle: ' + req.query.pin + " | state " + duino.digitalRead( pin));
 });
 
-app.get('/toggle2', function (req, res){
-    duino.digitalWrite( led2, !duino.digitalRead( led2));
-    res.send('Actual value for pin 2: ' + duino.digitalRead( led2));
-});
-
-app.get('/toggle3', function (req, res){
-    duino.digitalWrite( led3, !duino.digitalRead( led3 ));
-    res.send('Actual value for pin 3: ' + duino.digitalRead( led3 ));
-});
-
-app.get('/toggle4', function (req, res){
-    duino.digitalWrite( led4, !duino.digitalRead( led4));
-    res.send('Actual value for pin 4: ' + duino.digitalRead( led4));
-});
 
 app.listen(3000, function () {
     console.log('Example app listening on port 3000!');
